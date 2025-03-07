@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>This One Prompt Project Does Exist</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>This One Prompt Project Does Exist</h1>
+      <p class="subtitle">A gallery of one-prompt AI-generated web projects</p>
+    </header>
+
+    <main class="gallery-container">
+      <div v-for="(project, index) in projects" :key="index" class="gallery-item" @click="openProject(project)">
+        <div class="project-card">
+          <div class="project-image-container">
+            <div class="project-image" :style="{'background-image': `url(${project.imageUrl})`}"></div>
+            <div class="prompt-badge">
+              <span class="prompt-count">1</span>
+              <span class="prompt-text">prompt</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="fullscreen-overlay" :class="{ active: activeProject }" @click="closeProject">
+      <div class="iframe-container" @click.stop>
+        <iframe v-if="activeProject" :src="activeProject.url" allow="fullscreen"></iframe>
+        <button class="close-button" @click="closeProject">×</button>
+      </div>
+    </div>
+
+    <footer>
+      <p>Disclaimer: Some projects may not be mobile compatible. Most projects took 3-4 prompt attempts with slight modifications to achieve functionality.</p>
+    </footer>
+  </div>
+
+  <script type="module" src="script.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
